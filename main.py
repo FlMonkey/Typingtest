@@ -1,6 +1,6 @@
-x = 'hello world storm house apple microphone cammel'
+x = 'hello world storm house apple microphone camel'
 import time
-print("hello world storm house apple microphone cammel")
+print("hello world storm house apple microphone camel")
 def time_convert(sec):
   mins = sec // 60
   sec = sec % 60
@@ -13,9 +13,9 @@ start_time = time.time()
 def wpm():
     slenth = len(x)
     numword = slenth / 4.7
-    wordspm = numword / time_lapsed
- 
-    print("Your WPM is: ", wpm)
+    wordspm = numword / (time_lapsed/60)
+    wordspm = str(wordspm)
+    print("Your WPM is: ", wordspm)
 
 def start():
     if input() == x:
