@@ -1,9 +1,11 @@
-from flask import Flask, request, render_template,jsonify
+from flask import Flask, request, render_template,jsonify, redirect, url_for
 import random
 import time
 app = Flask(__name__)
 
 promptlen = 1
+
+word = []
 
 @app.route('/', methods =["GET", "POST"])
 def gfg():
@@ -11,12 +13,22 @@ def gfg():
        # getting input with name = fname in HTML form
         global promptlen
         promptlen = int(request.form.get("wordlength"))
-        return render_template("speed.html", promptlen = promptlen)
+        return redirect('/test')
     return render_template('index.html')
 
-
-
-word = []
+def start():
+  input("Press Enter to start")
+  start_time = time.time()
+  if input() == prompt:
+      end_time = time.time()
+      global time_lapsed
+      time_lapsed = end_time - start_time
+      tlr = round(time_lapsed, 2)
+      print(f"It took you {str(tlr)} seconds to type the prompt")
+      wpm()
+  else:
+      print("you fucked up")
+      start()
 
 #creates list of words
 with open("words.txt", "r") as file:
@@ -25,39 +37,27 @@ with open("words.txt", "r") as file:
     for i in range(promptlen):
       word.append(random.choice(words))
     prompt = ' '.join(map(str,word))
-    print(prompt)
 
-def time_convert(sec):
-    mins = sec // 60
-    sec = sec % 60
-    hours = mins // 60
-    mins = mins % 60
-    print("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
+@app.route('/test', methods =["GET", "POST"])
+def test():
+    if request.method == "POST":
+        pass
+    return render_template('speed.html', promptlen = promptlen, prompt = prompt)
 
 def wpm():
     slenth = len(prompt)
     numword = slenth / 4.7
-    wordspm = numword / (time_lapsed/60)
+    wordspm = round((numword / (time_lapsed/60)), 2)
     wordspm = str(wordspm)
     print("Your WPM is: ", wordspm)
 
 
 #Starts the timer and calculate the elapsed time
-def start():
-  input("Press Enter to start")
-  start_time = time.time()
-  if input() == prompt:
-      end_time = time.time()
-      global time_lapsed
-      time_lapsed = end_time - start_time
-      time_convert(time_lapsed)
-      print(time_lapsed)
-      wpm()
-  else:
-      print("you fucked up")
-      start()
+
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
     
 start()
+
+#Credit to @WhineyMonkey10 for being helpful but for also eating all my cookies

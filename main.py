@@ -1,3 +1,4 @@
+
 import time 
 import random
 
@@ -15,19 +16,12 @@ with open("words.txt", "r") as file:
     prompt = ' '.join(map(str,word))
     print(prompt)
 
-#converts time to minutes and seconds    
-def time_convert(sec):
-  mins = sec // 60
-  sec = sec % 60
-  hours = mins // 60
-  mins = mins % 60
-  print("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
 
 #calculates words per minute
 def wpm():
     slenth = len(prompt)
     numword = slenth / 4.7
-    wordspm = numword / (time_lapsed/60)
+    wordspm = round((numword / (time_lapsed/60)), 2)
     wordspm = str(wordspm)
     print("Your WPM is: ", wordspm)
 
@@ -39,11 +33,12 @@ def start():
       end_time = time.time()
       global time_lapsed
       time_lapsed = end_time - start_time
-      time_convert(time_lapsed)
-      print(time_lapsed)
+      tlr = round(time_lapsed, 2)
+      print(f"It took you {str(tlr)} seconds to type the prompt")
       wpm()
   else:
       print("you fucked up")
       start()
 
 start()
+
