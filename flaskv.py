@@ -17,8 +17,8 @@ def gfg():
             words = list(map(str, allText.split()))
             for i in range(promptlen):
                 word.append(random.choice(words))
-                global prompt
-                prompt = ' '.join(map(str,word))
+                global promptb
+                promptb = ' '.join(map(str,word))
         
         return redirect('/test')
     return render_template('index.html')
@@ -27,12 +27,12 @@ def gfg():
 def start():
   #input("Press Enter to start")
   start_time = time.time()
-  if input() == prompt:
+  if input() == promptb:
       end_time = time.time()
       global time_lapsed
       time_lapsed = end_time - start_time
       tlr = round(time_lapsed, 2)
-    #print(f"It took you {str(tlr)} seconds to type the prompt")
+    #print(f"It took you {str(tlr)} seconds to type the promptb")
       wpm()
   else:
       #print("you fucked up")
@@ -46,10 +46,10 @@ def start():
 def test():
     if request.method == "POST":
         pass
-    return render_template('speed.html', promptlen = promptlen, prompt = prompt)
+    return render_template('speed.html', promptlen = promptlen, promptb = promptb)
 
 def wpm():
-    slenth = len(prompt)
+    slenth = len(promptb)
     numword = slenth / 4.7
     wordspm = round((numword / (time_lapsed/60)), 2)
     wordspm = str(wordspm)

@@ -1,7 +1,17 @@
 <script>
-    window.addEventListener('keydown', function (e) {
-  document.querySelector('p').innerHTML = `You pressed ${e.key}`;
+    var arr = [
+];
+
+// append new value to the array
+
+
+
+    
+  window.addEventListener('keydown', function (e) {
+  document.querySelector('p').innerHTML = arr.push(e.key);
 }, false);
+
+
 </script>
 
 <label> 
@@ -9,7 +19,13 @@
 </label>
 
 <p>
-    Your sentence is: {{ prompt }}
+    You pressed {{ promptb }}
 </p>
 
-<p>[Press any key]</p>
+<p>
+    Your sentence {{prompt}}
+</p>
+
+<p>
+    {{ arr }}
+</p>
