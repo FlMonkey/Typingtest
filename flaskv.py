@@ -9,9 +9,11 @@ promptlen = 1
 def gfg():
     if request.method == "POST":
        # getting input with name = fname in HTML form
-       promptlen = int(request.form.get("wordlength"))
-       return render_template('speed.html', promptlen = promptlen)
-    return render_template("index.html")
+        global promptlen
+        promptlen = int(request.form.get("wordlength"))
+        return render_template("speed.html", promptlen = promptlen)
+    return render_template('index.html')
+
 
 
 word = []
