@@ -1,28 +1,61 @@
 from flask import Flask, request, render_template,jsonify
-
+import random
+import time
 app = Flask(__name__)
 
-def do_something(text1,text2):
-   text1 = text1.upper()
-   text2 = text2.upper()
-   combine = text1 + text2
-   return combine
+promptlen = 1
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+@app.route('/', methods =["GET", "POST"])
+def gfg():
+    if request.method == "POST":
+       # getting input with name = fname in HTML form
+       promptlen = int(request.form.get("wordlength"))
+       return render_template('speed.html', promptlen = promptlen)
+    return render_template("index.html")
 
-@app.route('/join', methods=['GET','POST'])
-def my_form_post():
-    text1 = request.form['text1']
-    word = request.args.get('text1')
-    text2 = request.form['text2']
-    combine = do_something(text1,text2)
-    result = {
-        "output": combine
-    }
-    result = {str(key): value for key, value in result.items()}
-    return jsonify(result=result)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+word = []
+
+#creates list of words
+with open("words.txt", "r") as file:
+    allText = file.read()
+    words = list(map(str, allText.split()))
+    for i in range(promptlen):
+      word.append(random.choice(words))
+    prompt = ' '.join(map(str,word))
+    print(prompt)
+
+def time_convert(sec):
+    mins = sec // 60
+    sec = sec % 60
+    hours = mins // 60
+    mins = mins % 60
+    print("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
+
+def wpm():
+    slenth = len(prompt)
+    numword = slenth / 4.7
+    wordspm = numword / (time_lapsed/60)
+    wordspm = str(wordspm)
+    print("Your WPM is: ", wordspm)
+
+
+#Starts the timer and calculate the elapsed time
+def start():
+  input("Press Enter to start")
+  start_time = time.time()
+  if input() == prompt:
+      end_time = time.time()
+      global time_lapsed
+      time_lapsed = end_time - start_time
+      time_convert(time_lapsed)
+      print(time_lapsed)
+      wpm()
+  else:
+      print("you fucked up")
+      start()
+
+if __name__=='__main__':
+    app.run()
+    
+start()
