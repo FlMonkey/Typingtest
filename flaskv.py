@@ -3,7 +3,6 @@ import random
 import time
 app = Flask(__name__)
 
-promptlen = 1
 
 word = []
 
@@ -13,8 +12,17 @@ def gfg():
        # getting input with name = fname in HTML form
         global promptlen
         promptlen = int(request.form.get("wordlength"))
+        with open("words.txt", "r") as file:
+            allText = file.read()
+            words = list(map(str, allText.split()))
+            for i in range(promptlen):
+                word.append(random.choice(words))
+                global prompt
+                prompt = ' '.join(map(str,word))
+        
         return redirect('/test')
     return render_template('index.html')
+        
 
 def start():
   #input("Press Enter to start")
@@ -31,13 +39,8 @@ def start():
       start()
 
 #creates list of words
-with open("words.txt", "r") as file:
-    allText = file.read()
-    words = list(map(str, allText.split()))
-    for i in range(promptlen):
-      word.append(random.choice(words))
-    prompt = ' '.join(map(str,word))
-    print(prompt)
+
+
 
 @app.route('/test', methods =["GET", "POST"])
 def test():
