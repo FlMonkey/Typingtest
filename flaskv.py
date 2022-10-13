@@ -17,17 +17,17 @@ def gfg():
     return render_template('index.html')
 
 def start():
-  input("Press Enter to start")
+  #input("Press Enter to start")
   start_time = time.time()
   if input() == prompt:
       end_time = time.time()
       global time_lapsed
       time_lapsed = end_time - start_time
       tlr = round(time_lapsed, 2)
-      print(f"It took you {str(tlr)} seconds to type the prompt")
+    #print(f"It took you {str(tlr)} seconds to type the prompt")
       wpm()
   else:
-      print("you fucked up")
+      #print("you fucked up")
       start()
 
 #creates list of words
@@ -37,6 +37,7 @@ with open("words.txt", "r") as file:
     for i in range(promptlen):
       word.append(random.choice(words))
     prompt = ' '.join(map(str,word))
+    print(prompt)
 
 @app.route('/test', methods =["GET", "POST"])
 def test():
