@@ -1,47 +1,23 @@
-<script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const arr = [];
-
-// append new value to the array
-
-
-
-    
-  window.addEventListener('keydown', function (e) {
-  document.querySelector('p').innerHTML = arr.push(e.key);
-  let inputusr = arr.toString();
-=======
-    window.addEventListener('keydown', function (e) {
-  document.querySelector('p').innerHTML = `You pressed ${e.key}`;
->>>>>>> parent of 306e85e (Array is numbers instead of strings)
-=======
-    window.addEventListener('keydown', function (e) {
-  document.querySelector('p').innerHTML = `You pressed ${e.key}`;
->>>>>>> parent of 306e85e (Array is numbers instead of strings)
-}, false);
-</script>
 
 <label> 
-    Amount of words: {{ promptlen }}
+  Amount of words: {{ promptlen }}
 </label>
 
+<p>Typing will start the timer. (Red means timer started)</p>
+
+<input type="text" id="demo">
+
+<script>
+document.getElementById("demo").onkeypress = function() {myFunction()};
+
+function myFunction() {
+  document.getElementById("demo").style.backgroundColor = "red";
+
+}
+</script>
+
 <p>
-    Your sentence is: {{ prompt }}
+  Your sentence: {{prompt}}
 </p>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<p>
-    Your sentence {{prompt}}
-</p>
 
-<p>
-    {{ inputusr }}
-</p>
-=======
-<p>[Press any key]</p>
->>>>>>> parent of 306e85e (Array is numbers instead of strings)
-=======
-<p>[Press any key]</p>
->>>>>>> parent of 306e85e (Array is numbers instead of strings)
