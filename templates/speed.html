@@ -1,6 +1,5 @@
 <script>
-    var arr = [
-];
+    const arr = [];
 
 // append new value to the array
 
@@ -9,6 +8,7 @@
     
   window.addEventListener('keydown', function (e) {
   document.querySelector('p').innerHTML = arr.push(e.key);
+  let inputusr = arr.toString();
 }, false);
 
 
@@ -27,5 +27,5 @@
 </p>
 
 <p>
-    {{ arr }}
+    {{ inputusr }}
 </p>
