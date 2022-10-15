@@ -52,10 +52,17 @@
     font-family: 'Nunito', sans-serif;  }
 
   .sentance {
-    margin-left: 35rem;
     padding-bottom: 89rem;
     font-family: 'Nunito', sans-serif;  
-    text-align: left;
+    text-align: center; }
+  
+  .sentance-title {
+    font-size: 1.5em;
+    color: white;
+    margin-top: 1em;
+    margin-left: 37rem;
+    font-family: 'Nunito', sans-serif;
+
   }
 </style>
 
@@ -66,7 +73,7 @@
 <p class="info">Typing will start the timer</p>
 
 <body>
-<textarea placeholder="Comment..." id="demo" name="type_box" class='textbox'></textarea>
+<textarea placeholder="Sentence..." id="demo" name="type_box" class='textbox'></textarea>
 </body>
 
 <script>
@@ -79,8 +86,14 @@ function myFunction() {
 }
 </script>
 
-<p class="sentance">
-  Your sentence is: {{prompt}}
+<p class="sentance-title">
+  Your sentence is
+  <p class="sentance">
+    {{ prompt }}
+  </p>
 </p>
+
+
+
 
 
