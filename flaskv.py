@@ -48,6 +48,7 @@ def test():
         pass
     return render_template('speed.html', promptlen = promptlen, prompt = prompt)
 
+
 def wpm():
     slenth = len(prompt)
     numword = slenth / 4.7

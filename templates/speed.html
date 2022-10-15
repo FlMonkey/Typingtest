@@ -1,9 +1,22 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+
 <style>
+  body {
+    background-image: url("{{ url_for('static', filename='images/compute-ea4c57a4.png') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  }
   demo {
     box-sizing:border-box;
+    color: white;
   }
   body {
     margin:20px;
+    color: white;
     background-color: #fafafa;
   }
   textarea {
@@ -12,24 +25,48 @@
     padding:15px;
     border-radius:15px;
     border:0;
+    color: white;
     box-shadow:4px 4px 10px rgba(0,0,0,0.06);
     height:150px;
   }
+  .wordamount {
+    font-size: 1.5em;
+    color: white;
+    text-align: right;
+    margin-top: 1em;
+    margin-left: 32rem;
+    font-family: 'Nunito', sans-serif;
+  }
 
+  .textbox {
+    margin-right: 1rem;
+    margin-top: 1em;
+    font-family: 'Nunito', sans-serif;
+    opacity: 0.8;
+  }
 
+  .info {
+    margin-left: 35rem;
+    margin-right: 1rem;
+    margin-top: 1em;
+    font-family: 'Nunito', sans-serif;  }
+
+  .sentance {
+    margin-left: 35rem;
+    padding-bottom: 89rem;
+    font-family: 'Nunito', sans-serif;  
+    center: 0;
+  }
 </style>
 
-
-
-
-<label> 
-  Amount of words: {{ promptlen }}
+<label class='wordamount'> 
+  Chosen amount of words: {{ promptlen }}
 </label>
 
-<p>Typing will start the timer. (Grey means timer started)</p>
+<p class="info">Typing will start the timer</p>
 
 <body>
-<textarea placeholder="Comment..." id="demo"></textarea>
+<textarea placeholder="Comment..." id="demo" name="type_box" class='textbox'></textarea>
 </body>
 
 <script>
@@ -38,11 +75,12 @@ document.getElementById("demo").onkeypress = function() {myFunction()};
 function myFunction() {
   document.getElementById("demo").style.backgroundColor = "rgb(180, 180, 180, 0.25)";
 
+
 }
 </script>
 
-<p>
-  Your sentence: {{prompt}}
+<p class="sentance">
+  Your sentence is: {{prompt}}
 </p>
 
 
