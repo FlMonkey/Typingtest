@@ -1,4 +1,4 @@
-
+'''
 import time 
 import random
 
@@ -42,3 +42,7 @@ def start():
 
 start()
 
+'''
+
+x = "yourself lose project call might thousand test subject security outside air store"
+print(len(x)/4.7)

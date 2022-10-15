@@ -80,34 +80,51 @@
 <textarea placeholder="Sentence..." id="demo" name="type_box" class='textbox'></textarea>
 </body>
 
-
-<script>
-document.getElementById("demo").onkeypress = function() {myFunction()};
-
-function myFunction() {
-  document.getElementById("demo").style.backgroundColor = "rgb(180, 180, 180, 0.25)";
-  var start = new Date().getTime();
-
-  function handle(e){
-    if(e.keyCode === 13){
-        e.preventDefault();
-        var end = new Date().getTime();
-        var time = end - start;
-        var seconds = time / 1000;
-        var charamount = prompt.length;
-        var wordsreal = charamount / 4.7;
-        var wpm = wordsreal / seconds * 60;
-        consol.log(wpm);
-
-}}}
-</script>
-
 <p class="sentance-title">
   Your sentence is
   <p class="sentance">
     {{ prompt }}
   </p>
 </p>
+
+
+
+<script>
+document.getElementById("demo").onkeydown = function() {myFunction()};
+
+var fired = false;
+
+function myFunction() {
+  if(!fired) {
+    fired = true;
+    document.getElementById("demo").style.backgroundColor = "rgb(180, 180, 180, 0.25)";
+    var start = new Date().getTime();
+    console.log(start);
+    document.onkeyup = function(event) {
+      var keycode = event.keyCode;
+      if (keycode === 13) {     
+        console.log("Enter was pressed")
+        var end = new Date().getTime();
+        console.log(end);
+        var time = end - start;
+        console.log(time);
+        var rseconds = time / 1000;
+        var seconds = rseconds.toFixed(2);
+        console.log(seconds);
+        var charamount = ("{{ prompt }}").length;
+        var wordsreal = charamount / 4.7;
+        console.log(wordsreal);
+        var rwpm = wordsreal / (seconds / 60);
+        var wpm = rwpm.toFixed(2);
+        console.log(wpm);
+        console.log("1. Start 2. End 3. Time 4. Seconds 5. Charamount 6. Wordsreal 7. WPM")
+        window.alert("Your WPM is " + wpm + "\n" + "Your time was " + seconds + " seconds");
+      }
+    }
+  }
+}
+</script>
+
 
 
 <div class="github">
