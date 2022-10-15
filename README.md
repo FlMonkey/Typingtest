@@ -8,6 +8,8 @@ This project was created with a mix of Python, HTML, CSS and JavaScript.
 
 To run this project, just run the flaskv.py file. If running the Flask file doesn't work, be sure to follow the 'Flask' steps. A wiki will possibly be added leter on.
 
+A big thanks to @WhineyMonkey10 for helping me with the CSS and introducing me to flask. Another thanks to @ECamelz for the insperation for the project.
+
 Have fun typing!
 
 ![image](https://user-images.githubusercontent.com/71403599/166505554-ffe129e9-dcb9-4f86-a896-5147eed24027.png)
