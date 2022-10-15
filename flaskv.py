@@ -3,7 +3,7 @@ import random
 import time
 app = Flask(__name__)
 
-
+tstartp = 0
 word = []
 
 def wpm():
@@ -51,15 +51,7 @@ def test():
         pass
     return render_template('speed.html', promptlen = promptlen, prompt = prompt)
  
-@app.route('/start', methods =["GET"])   
-def checkvar():  
-    while True:
-        if tstartp == 1: 
-            start()
-            break
-        if tstartp != 1:
-            tstartp = request.values.get("tstart")
-    return "success"
+
         
 
 if __name__=='__main__':
