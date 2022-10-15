@@ -56,6 +56,7 @@ If it throws any errors requesting the package to be installed, INSTALL IT
 
 ![image](https://user-images.githubusercontent.com/71403599/166505681-d2a58620-a337-4d27-85c5-59723e5b8092.png)
 
+Once everything is installed simply run website.py and enjoy :)
 
 ## EXTRA INFORMATION AND CONTRIBUTING
 
