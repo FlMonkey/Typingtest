@@ -37,7 +37,8 @@ def gfg():
         with open("words.txt", "r") as file:
             allText = file.read()
             words = list(map(str, allText.split()))
-            for i in range(promptlen):
+            
+            for p in range(promptlen):
                 word.append(random.choice(words))
                 global prompt
                 prompt = ' '.join(map(str,word))
@@ -49,6 +50,7 @@ def gfg():
 def test():
     if request.method == "POST":
         pass
+            
     return render_template('speed.html', promptlen = promptlen, prompt = prompt)
  
 
