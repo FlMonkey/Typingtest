@@ -50,8 +50,10 @@ def test():
     if request.method == "POST":
         pass
     return render_template('speed.html', promptlen = promptlen, prompt = prompt)
- 
 
+@app.route('/results', methods =["GET", "POST"])
+def nothing():
+    return render_template('results.html')
         
 
 if __name__=='__main__':

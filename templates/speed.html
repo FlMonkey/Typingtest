@@ -119,6 +119,9 @@ function myFunction() {
         console.log(wpm);
         console.log("1. Start 2. End 3. Time 4. Seconds 5. Charamount 6. Wordsreal 7. WPM")
         window.alert("Your WPM is " + wpm + "\n" + "Your time was " + seconds + " seconds");
+        var wpm = localStorage.setItem("wpm", wpm);
+        var seconds = localStorage.setItem("seconds", seconds);
+        window.location.href = "/results";
       }
     }
   }
